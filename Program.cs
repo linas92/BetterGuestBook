@@ -30,23 +30,28 @@ namespace BetterGuestBook
             {
                 GuestModel guest = new GuestModel();// this represents ONE singular guests
 
-                Console.WriteLine("What is your first name?");
-                guest.FirstName = Console.ReadLine();// i should check if name is "valid" but i presume its a paper guest name
+                //should check if the input is "valid" but its no big deal, we can "assume"
+                guest.FirstName = GetInforFromConsole("What is your first name?");
 
-                Console.WriteLine("What is your last name?");
-                guest.LastName = Console.ReadLine();// i should check if name is "valid" but i presume its a paper guest name
+                guest.LastName = GetInforFromConsole("What is your last name?");
 
-                Console.WriteLine("What message would you like to tell your host?");
-                guest.MessageToHost = Console.ReadLine();
+                guest.MessageToHost = GetInforFromConsole("What message would you like to tell your host?");
 
-                Console.WriteLine("Are more guests coming? Yes/no");
-                moreGuestsComing = Console.ReadLine();
+                moreGuestsComing = GetInforFromConsole("Are more guests coming? Yes/no");
 
                 guests.Add(guest);// adding guest to the guests lists, else why it disappears
 
                 Console.Clear();
 
             } while (moreGuestsComing.ToLower() == "yes");//runs as long as the answer is yes
+        }
+        private static string GetInforFromConsole(string input)
+        {
+            string output = string.Empty;
+            Console.WriteLine(input);
+            output = Console.ReadLine();
+
+            return output;
         }
     }
 }
